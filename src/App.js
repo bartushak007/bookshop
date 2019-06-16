@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchCategory } from "./actions/productsActions";
 
-import useFetch from './hooks/useFetch';
-import { resolvePath } from './helpers/index';
+import Aside from './components/layout/aside';
+import Template from './components/layout/template';
 
-const App= () => {
-
-  // const { data, loading} = useFetch(resolvePath('data.json'));
+const App = ({ fetchCategory, products }) => {
+  console.log(products);
+  useEffect(fetchCategory, []);
   
+
   return (
-    <div className="App">
-      HELLO      
+    <div >
+      <Aside {...{products}}/>
+      <Template/>
     </div>
   );
-}
+};
+const mapStateToProps = state => ({ products: state.shop.products });
 
-export default App;
+export default connect(
+  mapStateToProps,
+  { fetchCategory }
+)(App);

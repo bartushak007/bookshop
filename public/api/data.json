@@ -1,0 +1,6 @@
+{
+  "products": {
+    "books": {"api": "api/books.json"},
+    "phones": {}
+  }
+}
