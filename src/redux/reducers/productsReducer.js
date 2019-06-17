@@ -1,22 +1,22 @@
-import { FETCH_DATA } from "../actions/type";
+import { FETCH_DATA, DOWNLOAD_PRODUCTS } from "../actions/type";
 
-const initialState = { products: {} };
+const initialState = { categories: {} };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATA:
       return {
         ...state,
-        products: action.products
+        categories: action.categories
       };
 
-    case "DOWNLOAD_PRODUCTSLIST":
+    case DOWNLOAD_PRODUCTS:
       return {
         ...state,
-        products: {
-          ...state.products,
+        categories: {
+          ...state.categories,
           [action.field]: {
-            ...state.products[action.field],
+            ...state.categories[action.field],
             products: action.products
           }
         }

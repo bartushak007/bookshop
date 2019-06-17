@@ -1,6 +1,6 @@
 {
-  "products": {
-    "books": {"api": "api/books.json"},
-    "phones": {}
+  "categories": {
+    "books": { "api": "api/books.json", "title": "Books" },
+    "phones": { "api": "api/phones.json", "title": "Phones" }
   }
 }

@@ -1,20 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import {fetchProduct} from '../../../actions/productsActions';
-import { Switch, NavLink, Route } from "react-router-dom";
+import { fetchProduct } from "../../../redux/actions/productsActions";
+// import { Switch, NavLink, Route } from "react-router-dom";
 
 import "./style/template.scss";
 
-
-
 const Category = ({ match, fetchProduct }) => {
-  
-  
-  return (<h1 onClick={()=> fetchProduct(match.params.name)}>{match.params.name}</h1>)};
+  return (
+    <h1 onClick={() => fetchProduct(match.params.name)}>{match.params.name}</h1>
+  );
+};
 
-const mapStateToProps = state => ({ products: state.shop.products });
+const mapStateToProps = state => ({ categories: state.shop.categories });
 
 export default connect(
   mapStateToProps,
-  {fetchProduct}
+  { fetchProduct }
 )(Category);

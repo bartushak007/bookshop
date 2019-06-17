@@ -1,23 +1,21 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchCategory } from "./actions/productsActions";
+import { fetchCategory } from "./redux/actions/productsActions";
 
-import Aside from './components/layout/aside';
-import Template from './components/layout/template';
+import Aside from "./components/layout/aside";
+import Template from "./components/layout/template";
 
-const App = ({ fetchCategory, products }) => {
-  console.log(products);
+const App = ({ fetchCategory, categories }) => {
   useEffect(fetchCategory, []);
-  
 
   return (
-    <div >
-      <Aside {...{products}}/>
-      <Template/>
+    <div>
+      <Aside {...{ categories }} />
+      <Template />
     </div>
   );
 };
-const mapStateToProps = state => ({ products: state.shop.products });
+const mapStateToProps = state => ({ categories: state.shop.categories });
 
 export default connect(
   mapStateToProps,
