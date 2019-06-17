@@ -12,8 +12,8 @@ export const fetchCategory = () => dispatch => {
 
 export const fetchProduct = product => (dispatch, getStore) => {
   const store = getStore();
-
-  if (!store.shop.categories[product].categories) {
+  console.log(store)
+  if (Object.keys(store.shop.categories).length && !store.shop.categories[product].categories) {
     fetch(resolvePath(store.shop.categories[product].api))
       .then(j => j.json())
       .then(data => {

@@ -7,23 +7,16 @@ import "./style/template.scss";
 
 import Category from "./Category";
 
-const X = () => {
-  console.log("xxx");
-  return <h1>XXXXXXXXXXXXXXXXXX</h1>;
-};
+import ProductsList from './ProductsList';
 
 const Template = ({ categories, fetchProduct }) => {
   return (
     <div>
       <h1>click</h1>
-      <Switch>
-        <Route path={`/category/:name/product/4`} component={X} />;
-        {Object.entries(categories).map(([key, category]) => {
-          return (
-            <Route key={key} path={`/category/:name`} component={Category} />
-          );
-        })}
-      </Switch>
+      {Object.entries(categories).length && (<Switch>        
+        <Route  path={`/category/:name`} component={Category} exact/>
+        <Route  path={`/category/:name/products/:pr`} component={ProductsList}/>
+      </Switch>)}
     </div>
   );
 };
